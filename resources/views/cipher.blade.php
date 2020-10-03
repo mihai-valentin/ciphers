@@ -25,7 +25,7 @@
 <div class="flex justify-center mt-10">
     <form action="/cipher"
           method="post"
-          class="flex items-center flex-col justify-center items-center bg-gray-200 py-10 px-5  rounded shadow-lg">
+          class="w-4/5 md:w-auto flex items-center flex-col justify-center items-center bg-gray-200 py-10 px-5  rounded shadow-lg">
         <input type="hidden" name="type" value="{{ $type }}">
         <h2 class="text-center text-lg font-bold text-green-500 mb-10">
             {{ ucfirst($type) }} cipher
