@@ -10,8 +10,9 @@ namespace App\Ciphers;
 class AlgorithmFactory
 {
     private const ALGORITHMS = [
-        'caesar' => CaesarCipher::class,
-        'affine' => AffineCipher::class
+        'caesar'   => CaesarCipher::class,
+        'affine'   => AffineCipher::class,
+        'polybius' => PolybiusCipher::class,
     ];
 
     public static function get(string $type): Cipher

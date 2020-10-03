@@ -3,6 +3,8 @@
 namespace App\Ciphers;
 
 use function chr;
+use function in_array;
+use function ord;
 
 /**
  * Class LatinAlphabet
@@ -21,6 +23,15 @@ class LatinAlphabet
     public function all(): array
     {
         return range(self::FIRST_LETTER, self::LAST_LETTER);
+    }
+
+    public function without(array $excluded): array
+    {
+        $filteredList = array_filter($this->all(), static function ($letter) use ($excluded) {
+            return !in_array($letter, $excluded, true);
+        });
+
+        return array_values($filteredList);
     }
 
     public function from(int $start): array
@@ -55,5 +66,10 @@ class LatinAlphabet
         }
 
         return chr(self::FIRST_LETTER_ORD + $position);
+    }
+
+    public function getPosition(string $letter): int
+    {
+        return ord($letter) - self::FIRST_LETTER_ORD;
     }
 }

@@ -23,7 +23,7 @@ class CipherRequestValidator
             $request,
             [
                 'type'           => 'required',
-                'input_text'     => 'required|min:2|max:255',
+                'input_text'     => 'required|max:255',
                 'key'            => 'required',
                 'operation_type' => 'required',
                 'cipher'         => 'required'
