@@ -1,14 +1,21 @@
 <?php
 
-
 namespace App\Ciphers;
 
+use function chr;
 
+/**
+ * Class LatinAlphabet
+ * @package App\Ciphers
+ */
 class LatinAlphabet
 {
-    private const LENGTH = 26;
-    private const A_ORD = 65;
+    public const LENGTH = 26;
+
+    private const FIRST_LETTER_ORD = 65;
+
     private const FIRST_LETTER = 'A';
+
     private const LAST_LETTER = 'Z';
 
     public function all(): array
@@ -19,7 +26,7 @@ class LatinAlphabet
     public function from(int $start): array
     {
         $start = $this->normalizeOffset($start);
-        $firstLetter = chr(self::A_ORD + $start);
+        $firstLetter = chr(self::FIRST_LETTER_ORD + $start);
 
         return range($firstLetter, self::LAST_LETTER);
     }
@@ -27,7 +34,7 @@ class LatinAlphabet
     public function to(int $end): array
     {
         $end = $this->normalizeOffset($end);
-        $lastLetter = chr(self::A_ORD + $end);
+        $lastLetter = chr(self::FIRST_LETTER_ORD + $end);
 
         return range(self::FIRST_LETTER, $lastLetter);
     }
@@ -39,5 +46,14 @@ class LatinAlphabet
         }
 
         return $step - 1;
+    }
+
+    public function getLetter(int $position): string
+    {
+        if ($position < 0) {
+            $position = self::LENGTH + $position;
+        }
+
+        return chr(self::FIRST_LETTER_ORD + $position);
     }
 }

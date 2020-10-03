@@ -3,11 +3,15 @@
 
 namespace App\Ciphers;
 
-
+/**
+ * Class AlgorithmFactory
+ * @package App\Ciphers
+ */
 class AlgorithmFactory
 {
     private const ALGORITHMS = [
-        'caesar' => Caesar::class
+        'caesar' => CaesarCipher::class,
+        'affine' => AffineCipher::class
     ];
 
     public static function get(string $type): Cipher

@@ -9,8 +9,13 @@ use App\Ciphers\Keys\CaesarKey;
  * Class Caesar
  * @package App\Ciphers
  */
-class Caesar implements Cipher
+class CaesarCipher implements Cipher
 {
+    /**
+     * @param string $input
+     * @param $key
+     * @return string
+     */
     public function encrypt(string $input, $key): string
     {
         $input = strtoupper($input);
@@ -26,16 +31,20 @@ class Caesar implements Cipher
         return $encryptedText;
     }
 
+    /**
+     * @param string $input
+     * @param $key
+     * @return string
+     */
     public function decrypt(string $input, $key): string
     {
         $input = strtoupper($input);
         $key = array_flip(app(CaesarKey::class)->generate($key));
-        $alphabet = app(LatinAlphabet::class)->all();
 
         $encryptedText = str_split($input);
         $plainText = '';
         foreach ($encryptedText as $char) {
-            $plainText .= $alphabet[$key[$char]];
+            $plainText .= app(LatinAlphabet::class)->getLetter($key[$char]);
         }
 
         return $plainText;
