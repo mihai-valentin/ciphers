@@ -21,6 +21,9 @@ class PolybiusCipher implements Cipher
         $plainText = str_split($input);
         $encryptedText = '';
         foreach ($plainText as $letter) {
+            if ($letter === ' ') {
+                continue;
+            }
             $position = $key['alphabet'][$letter];
             $row = $position % $key['keys_size'];
             $column = (int)($position / $key['keys_size']);

@@ -29,6 +29,11 @@ class AffineCipher implements Cipher
 
         $encryptedText = '';
         foreach ($plainText as $letter) {
+            if ($letter === ' ') {
+                $encryptedText .= ' ';
+                continue;
+            }
+
             $encryptedPosition = ($key['a'] * $alphabet[$letter] + $key['b']) % LatinAlphabet::LENGTH;
             $encryptedText .= app(LatinAlphabet::class)->getLetter($encryptedPosition);
         }
@@ -53,6 +58,11 @@ class AffineCipher implements Cipher
 
         $plainText = '';
         foreach ($encryptedText as $letter) {
+            if ($letter === ' ') {
+                $plainText .= ' ';
+                continue;
+            }
+
             $decryptedPosition = $key['a'] * ($alphabet[$letter] - $key['b']) % LatinAlphabet::LENGTH;
             $plainText .= app(LatinAlphabet::class)->getLetter($decryptedPosition);
         }

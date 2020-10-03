@@ -25,6 +25,11 @@ class CaesarCipher implements Cipher
         $plainText = str_split($input);
         $encryptedText = '';
         foreach ($plainText as $char) {
+            if ($char === ' ') {
+                $encryptedText .= ' ';
+                continue;
+            }
+
             $encryptedText .= $key[$alphabet[$char]];
         }
 
@@ -44,6 +49,11 @@ class CaesarCipher implements Cipher
         $encryptedText = str_split($input);
         $plainText = '';
         foreach ($encryptedText as $char) {
+            if ($char === ' ') {
+                $plainText .= ' ';
+                continue;
+            }
+
             $plainText .= app(LatinAlphabet::class)->getLetter($key[$char]);
         }
 
