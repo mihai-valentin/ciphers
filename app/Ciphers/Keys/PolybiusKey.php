@@ -27,6 +27,7 @@ class PolybiusKey implements Key
      */
     public function generate($settings)
     {
+        $settings = strtolower($settings);
         $alphabet = app(LatinAlphabet::class)->without(['J']);
         $keys = range(self::KEYS[$settings]['from'], self::KEYS[$settings]['to']);
         $size = count($keys);
