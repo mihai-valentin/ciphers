@@ -67,6 +67,17 @@
             </div>
         </a>
     </div>
+    <div class="m-2">
+        <a href="/cipher/vigenere"
+           class="flex py-2 px-5 bg-purple-400 rounded-lg shadow-md hover:shadow-lg transition  duration-500 ease">
+            <div class="flex-shrink-0">
+                <img class="h-12" src="/public/img/vigenere.jpg" alt="Vigenere">
+            </div>
+            <div class="ml-3 flex items-center">
+                <h4 class="text-xl text-gray-900">Vigenere cipher</h4>
+            </div>
+        </a>
+    </div>
 </div>
 </body>
 </html>

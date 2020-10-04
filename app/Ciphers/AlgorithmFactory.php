@@ -14,6 +14,7 @@ class AlgorithmFactory
         'affine'   => AffineCipher::class,
         'polybius' => PolybiusCipher::class,
         'playfair' => PlayfairCipher::class,
+        'vigenere' => VigenereCipher::class,
     ];
 
     public static function get(string $type): Cipher
