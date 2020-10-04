@@ -13,6 +13,7 @@ class AlgorithmFactory
         'caesar'   => CaesarCipher::class,
         'affine'   => AffineCipher::class,
         'polybius' => PolybiusCipher::class,
+        'playfair' => PlayfairCipher::class,
     ];
 
     public static function get(string $type): Cipher
