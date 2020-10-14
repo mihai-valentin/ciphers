@@ -15,6 +15,7 @@ class AlgorithmFactory
         'polybius' => PolybiusCipher::class,
         'playfair' => PlayfairCipher::class,
         'vigenere' => VigenereCipher::class,
+        'rsa'      => RSACipher::class,
     ];
 
     public static function get(string $type): Cipher
