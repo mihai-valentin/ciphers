@@ -51,14 +51,13 @@ class RSACipher implements Cipher
     private function powerModulo(int $base, int $exp, int $mod): int
     {
         $result = 1;
-        if ($exp % 2 !== 0) {
-            $result = $base;
-            $exp--;
-        }
-
         while ($exp > 2) {
+            if ($exp % 2 !== 0) {
+                $result *= $base;
+                $exp--;
+            }
             $exp /= 2;
-            $base = $base ** 2 % $mod;
+            $base = ($base ** 2) % $mod;
         }
 
         return $result * ($base ** 2 % $mod) % $mod;
