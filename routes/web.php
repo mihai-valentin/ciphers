@@ -20,3 +20,7 @@ $router->get('/', function () {
 $router->get('/cipher/{type}', 'CiphersController@index');
 
 $router->post('/cipher', 'CiphersController@execute');
+
+$router->get('hash', 'HashDemonstrationController@index');
+
+$router->post('/hash/login', 'HashDemonstrationController@login');
